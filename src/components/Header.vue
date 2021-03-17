@@ -46,46 +46,6 @@
       </v-menu>
     </v-app-bar>
   </div>
-  <!-- <div>
-    <v-menu
-      offset-y
-      top
-      origin="top center"
-      transition="scale-transition"
-      open-on-hover
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-app-bar-nav-icon v-on="on" v-bind="attrs"></v-app-bar-nav-icon>
-      </template>
-      <v-list>
-        <router-link to="/" class="text-decoration-none">
-          <v-list-item link>
-            <a class="primary--text">Home</a>
-          </v-list-item>
-        </router-link>
-        <router-link to="/about" class="text-decoration-none">
-          <v-list-item link>
-            <a class="primary--text">About</a>
-          </v-list-item>
-        </router-link>
-        <router-link to="/services" class="text-decoration-none">
-          <v-list-item link>
-            <a class="primary--text">Services</a>
-          </v-list-item>
-        </router-link>
-        <router-link to="/work" class="text-decoration-none">
-          <v-list-item link>
-            <a class="primary--text">Work</a>
-          </v-list-item>
-        </router-link>
-        <router-link to="/contact" class="text-decoration-none">
-          <v-list-item link>
-            <a class="primary--text">Contact</a>
-          </v-list-item>
-        </router-link>
-      </v-list>
-    </v-menu>
-  </div> -->
 </template>
 
 <script>
