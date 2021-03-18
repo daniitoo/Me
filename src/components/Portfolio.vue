@@ -9,16 +9,77 @@
         </v-breadcrumbs>
         <h1 class="display-2 font-weight-medium mt-5">{{ items[2].show }}</h1>
       </div>
-      <v-container>
-      <v-layout class="new-grid seccion">
-        <v-flex class="uno">
-          <!-- <v-carousel hide-delimiters>
-            <v-carousel-item
-              v-for="(item, i) in workstate[id].imagenes"
-              :key="i"
-              :src="item"
-            ></v-carousel-item>
-          </v-carousel> -->
+      <v-layout row wrap class="seccion">
+        <v-flex xs12 md6 sm12 mb-16 px-5>
+          <v-row justify="center" class="img-principal">
+            <v-dialog v-model="dialog" width="60%" class="rela">
+              <template v-slot:activator="{ on, attrs }">
+                <v-img
+                  :aspect-ratio="15 / 10"
+                  position="top center"
+                  border
+                  :src="workstate[id].imagen1"
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-img>
+              </template>
+              <v-card>
+                <v-img border :src="workstate[id].imagen1"></v-img>
+              </v-card>
+            </v-dialog>
+          </v-row>
+          <!-- <v-img
+          :aspect-ratio="15 / 10"
+          position="top center"
+          border
+          class="mb-5"
+          :src="workstate[id].imagen1"
+        ></v-img> -->
+
+          <!-- <v-img
+          border
+          :src="workstate[id].imagen2"
+        ></v-img> -->
+        </v-flex>
+
+        <v-flex xs12 md6 sm12 px-5>
+          <div class="contenido-portafolio">
+            <p class="texto--text font-weight-regular mb-10">
+              {{ workstate[id].description }}
+            </p>
+            <h4 class="mb-1">Task</h4>
+            <p class="font-weight-medium texto--text ma-0">
+              {{ workstate[id].task }}
+            </p>
+            <div class="caracteristicas">
+              <ul
+                v-for="(value, key, i) in workstate[id].characteristics"
+                :key="i"
+              >
+                <li>
+                  <strong>{{ key }}</strong>
+                  <span
+                    class="texto--text font-weight-regular"
+                    v-for="v in value"
+                    :key="v.i"
+                    >{{ v }}</span
+                  >
+                </li>
+              </ul>
+            </div>
+            <v-btn
+              depressed
+              color="primary"
+              class="mt-10"
+              :href="workstate[id].linkSite"
+              target="_blank"
+            >
+              Visit Site
+            </v-btn>
+          </div>
+        </v-flex>
+
+        <!-- <v-flex class="uno">
           <v-row justify="center" class="img-principal">
             <v-dialog v-model="dialog" width="60%" class="rela">
               <template v-slot:activator="{ on, attrs }">
@@ -36,39 +97,33 @@
               </v-card>
             </v-dialog>
           </v-row>
+        </v-flex> -->
 
-          <!-- <v-img
-          border
-          :src="workstate[id].imagen2"
-        ></v-img> -->
-        </v-flex>
-
-        <v-flex class="dos">
-          <div class="contenido-portafolio">
-            <p class="texto--text font-weight-regular mb-10">
-              {{ workstate[id].description }}
-            </p>
-            <h4 class="mb-1">Task</h4>
-            <p class="font-weight-medium texto--text ma-0">
-              {{ workstate[id].task }}
-            </p>
-            <div class="caracteristicas">
-              <ul
-                v-for="(value, key, i) in workstate[0].characteristics"
-                :key="i"
-              >
-                <li>
-                  <strong>{{ key }}</strong>
-                  <span class="texto--text font-weight-regular">{{
-                    value
-                  }}</span>
-                </li>
-              </ul>
+        <!-- <v-flex class="dos">
+            <div class="contenido-portafolio">
+              <p class="texto--text font-weight-regular mb-10">
+                {{ workstate[id].description }}
+              </p>
+              <h4 class="mb-1">Task</h4>
+              <p class="font-weight-medium texto--text ma-0">
+                {{ workstate[id].task }}
+              </p>
+              <div class="caracteristicas">
+                <ul
+                  v-for="(value, key, i) in workstate[0].characteristics"
+                  :key="i"
+                >
+                  <li>
+                    <strong>{{ key }}</strong>
+                    <span class="texto--text font-weight-regular">{{
+                      value
+                    }}</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </v-flex>
+          </v-flex> -->
       </v-layout>
-      </v-container>
     </div>
     <Theme />
     <Footer />
@@ -185,14 +240,15 @@ export default {
 }
 
 .caracteristicas ul li {
-  display: table-caption;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
 .new-grid {
   display: grid;
 }
-.dos{
+.dos {
   margin-top: 50px;
 }
 /* .dos {
@@ -205,7 +261,7 @@ export default {
 
 @media (min-width: 960px) {
   .new-grid {
-    grid-template-columns: 50% 50%!important;
+    grid-template-columns: 50% 50% !important;
     column-gap: 50px;
   }
 
@@ -226,8 +282,8 @@ export default {
   margin-right: 0;
 }
 
-.v-responsive__content{
-  width: unset!important;
+.v-responsive__content {
+  width: unset !important;
 }
 
 /**Hover img */
