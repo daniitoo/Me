@@ -10,14 +10,21 @@
           >
             UI/UX DESIGNER & DEVELOPER
           </a>
-          <h1 class="font-weight-bold display-4 my-5 animate__animated animate__fadeIn animate__delay-.5s texto--text">I'm John Schmidtasd</h1>
+          <h1 class="font-weight-bold display-4 my-5 animate__animated animate__fadeIn animate__delay-.5s texto--text">I'm Daniel Huillcahuari Durand</h1>
           <div>
-            <v-btn depressed color="primary" class="mr-2 white--text"
-              >More about me</v-btn
-            >
-            <v-btn outlined color="primary" class="primary--text"
-              >Hire me</v-btn
-            >
+             <v-btn depressed color="primary" class="mr-2">
+              <router-link to="/about" class="text-decoration-none white--text">
+                More about me
+              </router-link>
+            </v-btn>
+            <v-btn outlined color="primary">
+              <router-link
+                to="/contact"
+                class="text-decoration-none primary--text"
+              >
+                Hire me
+              </router-link>
+            </v-btn>
           </div>
         </div>
       </div>

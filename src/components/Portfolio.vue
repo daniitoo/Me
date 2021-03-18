@@ -9,18 +9,27 @@
         </v-breadcrumbs>
         <h1 class="display-2 font-weight-medium mt-5">{{ items[2].show }}</h1>
       </div>
-
-      <v-layout class="new-grid seccion">
-        <v-flex class="uno">
-          <v-carousel hide-delimiters>
-            <v-carousel-item
-              v-for="(item, i) in workstate[id].imagenes"
-              :key="i"
-              :src="item"
-            ></v-carousel-item>
-          </v-carousel>
+      <v-layout row wrap class="seccion">
+        <v-flex xs12 md6 sm12 mb-16 px-5>
+          <v-row justify="center" class="img-principal">
+            <v-dialog v-model="dialog" width="60%" class="rela">
+              <template v-slot:activator="{ on, attrs }">
+                <v-img
+                  :aspect-ratio="15 / 10"
+                  position="top center"
+                  border
+                  :src="workstate[id].imagen1"
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-img>
+              </template>
+              <v-card>
+                <v-img border :src="workstate[id].imagen1"></v-img>
+              </v-card>
+            </v-dialog>
+          </v-row>
           <!-- <v-img
-          :aspect-ratio="15 / 16"
+          :aspect-ratio="15 / 10"
           position="top center"
           border
           class="mb-5"
@@ -33,7 +42,7 @@
         ></v-img> -->
         </v-flex>
 
-        <v-flex class="dos">
+        <v-flex xs12 md6 sm12 px-5>
           <div class="contenido-portafolio">
             <p class="texto--text font-weight-regular mb-10">
               {{ workstate[id].description }}
@@ -44,153 +53,76 @@
             </p>
             <div class="caracteristicas">
               <ul
-                v-for="(value, key, i) in workstate[0].characteristics"
+                v-for="(value, key, i) in workstate[id].characteristics"
                 :key="i"
               >
                 <li>
                   <strong>{{ key }}</strong>
-                  <span class="texto--text font-weight-regular">{{
-                    value
-                  }}</span>
+                  <span
+                    class="texto--text font-weight-regular"
+                    v-for="v in value"
+                    :key="v.i"
+                    >{{ v }}</span
+                  >
                 </li>
               </ul>
             </div>
+            <v-btn
+              depressed
+              color="primary"
+              class="mt-10"
+              :href="workstate[id].linkSite"
+              target="_blank"
+            >
+              Visit Site
+            </v-btn>
           </div>
         </v-flex>
 
-        <v-flex class="tres">
-          <div class="d-flex">
-            <v-dialog v-model="dialog" width="70%">
-              <template v-slot:activator="{ on }">
+        <!-- <v-flex class="uno">
+          <v-row justify="center" class="img-principal">
+            <v-dialog v-model="dialog" width="60%" class="rela">
+              <template v-slot:activator="{ on, attrs }">
                 <v-img
-                  :aspect-ratio="15 / 16"
+                  :aspect-ratio="15 / 9"
                   position="top center"
                   border
-                  class="imagen-muestra"
-                  :src="img2"
+                  :src="workstate[id].imagen1"
+                  v-bind="attrs"
                   v-on="on"
                 ></v-img>
               </template>
               <v-card>
-                <v-img
-                  position="top center"
-                  border
-                  class="imagen-muestra"
-                  :src="img2"
-                ></v-img>
+                <v-img border :src="workstate[id].imagen1"></v-img>
               </v-card>
             </v-dialog>
-            <!-- <v-dialog v-model="dialog" width="70%">
-              <template v-slot:activator="{ on }">
-                <v-img
-                  :aspect-ratio="15 / 16"
-                  position="top center"
-                  border
-                  class="imagen-muestra"
-                  :src="img2"
-                  v-on="on"
-                ></v-img>
-              </template>
-              <v-card>
-                <v-img
-                  position="top center"
-                  border
-                  class="imagen-muestra"
-                  :src="img2"
-                ></v-img>
-              </v-card>
-            </v-dialog> -->
-            <!-- <v-dialog v-model="dialog" width="70%">
-              <template v-slot:activator="{ on }">
-                <v-img
-                  :aspect-ratio="15 / 16"
-                  position="top center"
-                  border
-                  class="imagen-muestra"
-                  :src="img3"
-                  v-on="on"
-                ></v-img>
-              </template>
-              <v-card>
-                <v-img
-                  position="top center"
-                  border
-                  class="imagen-muestra"
-                  :src="img3"
-                ></v-img>
-              </v-card>
-            </v-dialog>
-            <v-dialog v-model="dialog" width="70%">
-              <template v-slot:activator="{ on }">
-                <v-img
-                  :aspect-ratio="15 / 16"
-                  position="top center"
-                  border
-                  class="imagen-muestra"
-                  :src="img4"
-                  v-on="on"
-                ></v-img>
-              </template>
-              <v-card>
-                <v-img
-                  position="top center"
-                  border
-                  class="imagen-muestra"
-                  :src="img4"
-                ></v-img>
-              </v-card>
-            </v-dialog> -->
-            <!-- <v-img
-                :aspect-ratio="15 / 16"
-                position="top center"
-                border
-                class="imagen-muestra"
-                :src="workstate[id].imagen1"
-              ></v-img> -->
-          </div>
-        </v-flex>
+          </v-row>
+        </v-flex> -->
 
-        <v-flex class="cautro">
-          <v-dialog v-model="dialog" width="70%">
-            <template v-slot:activator="{ on }">
-              <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
-            </template>
-            <v-card>
-              <v-img
-                position="top center"
-                border
-                class="imagen-muestra"
-                :src="workstate[id].imagen2"
-              ></v-img>
-            </v-card>
-          </v-dialog>
-          <v-dialog v-model="dialog" width="70%">
-            <template v-slot:activator="{ on }">
-              <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
-            </template>
-            <v-card>
-              <v-img
-                position="top center"
-                border
-                class="imagen-muestra"
-                :src="workstate[id].imagen1"
-              ></v-img>
-            </v-card>
-          </v-dialog>
-          <v-dialog v-model="dialog" width="70%">
-            <template v-slot:activator="{ on }">
-              <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
-            </template>
-            <v-card>
-              <v-img
-                position="top center"
-                border
-                class="imagen-muestra"
-                :src="img1"
-              ></v-img>
-            </v-card>
-          </v-dialog>
-        </v-flex>
+        <!-- <v-flex class="dos">
+            <div class="contenido-portafolio">
+              <p class="texto--text font-weight-regular mb-10">
+                {{ workstate[id].description }}
+              </p>
+              <h4 class="mb-1">Task</h4>
+              <p class="font-weight-medium texto--text ma-0">
+                {{ workstate[id].task }}
+              </p>
+              <div class="caracteristicas">
+                <ul
+                  v-for="(value, key, i) in workstate[0].characteristics"
+                  :key="i"
+                >
+                  <li>
+                    <strong>{{ key }}</strong>
+                    <span class="texto--text font-weight-regular">{{
+                      value
+                    }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </v-flex> -->
       </v-layout>
     </div>
     <Theme />
@@ -308,7 +240,8 @@ export default {
 }
 
 .caracteristicas ul li {
-  display: table-caption;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -316,26 +249,30 @@ export default {
   display: grid;
 }
 .dos {
-  grid-row: 3 / 4;
-}
-.tres {
-  grid-row: 2 / 3;
   margin-top: 50px;
 }
+/* .dos {
+  grid-row: 3 / 4;
+} */
+/* .tres {
+  grid-row: 2 / 3;
+  margin-top: 50px;
+} */
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .new-grid {
-    grid-template-columns: 50% 50%!important;
-    column-gap: 20px;
+    grid-template-columns: 50% 50% !important;
+    column-gap: 50px;
   }
 
   .dos {
     grid-row: unset;
+    margin: unset;
   }
 
-  .tres {
+  /* .tres {
     grid-column: 1 / 3;
-  }
+  } */
 }
 
 .imagen-muestra {
@@ -345,7 +282,27 @@ export default {
   margin-right: 0;
 }
 
-.v-responsive__content{
-  width: unset!important;
+.v-responsive__content {
+  width: unset !important;
+}
+
+/**Hover img */
+.img-principal {
+  position: relative;
+}
+.img-principal:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+.img-principal:hover::after {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 2;
+  color: var(--borde);
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f065";
+  font-size: 30px;
 }
 </style>
