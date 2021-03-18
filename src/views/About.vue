@@ -60,13 +60,13 @@
       <v-container fluid class="seccion">
         <span class="subheading text-center primary--text"> SKILLS <br /></span>
         <h2
-          class="display-2 text-center font-weight-medium subtitle mb-16"
+          class="display-2 text-center font-weight-medium subtitle"
           id="animacion-h2"
         >
           MySkill
         </h2>
         <v-layout>
-          <v-flex xs12 sm12 md12  class="ancho">
+          <v-flex xs12 sm12 md12  class="mt-16">
             <div class="barras-pensalas">
               <div
                 v-for="(value, key, index) in skills"
@@ -184,28 +184,10 @@ export default {
 
       let animacion = document.getElementById("animacion-h2");
       let posicion = animacion.getBoundingClientRect().top;
-      // console.log(posicion);
       if (posicion < tamañoPantalla) {
         animacion.className =
-          "animate__animated animate__bounceInUp display-2 animate__delay-.5s text-center font-weight-medium subtitle mb-16";
-        // animacion.style.animation = 'mover 1s ease-out'
+          "animate__animated animate__bounceInUp animate__delay-.5s display-2 text-center font-weight-medium subtitle";
       }
-
-      // let know = document.getElementById("barras");
-      // let knowPos = know.getBoundingClientRect().top;
-      // if (knowPos < tamañoPantalla) {
-      //   know.classList =
-      //     "animate__animated animate__slideInRight animate__delay-.5s ancho";
-      // }
-
-      //   function handleAnimationEnd(event) {
-      //   event.stopPropagation();
-      //   node.classList.remove("animate__animated animate__slideInUp display-2 animate__delay-1s");
-      //   resolve('Animation ended');
-      // }
-
-      //   know.addEventListener('animationend', handleAnimationEnd, {once: true});
-
       document
         .querySelectorAll("div.barras-move")
         .forEach((box) =>{
@@ -332,13 +314,4 @@ ul {
   margin-bottom: 5px;
 }
 
-@keyframes mover {
-  0% {
-    transform: translate(100%);
-  }
-}
-
-.ancho {
-  width: 100%;
-}
 </style>

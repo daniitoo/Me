@@ -24,7 +24,7 @@
           <ul class="contac-footer">
             <li v-for="(info, index, key) in newInfo" :key="key"
             class="element-contact footerText--text">
-              <strong>{{ index }}:</strong> {{ info }}
+              <strong>{{ index }}:</strong> <span class="primary--text font-weight-bold ml-1"> {{ info }}</span>
             </li>
           </ul>
         </v-flex>

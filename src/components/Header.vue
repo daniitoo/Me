@@ -2,9 +2,10 @@
   <div>
     <v-app-bar app :elevation="0" color="transparent" class="mx-5">
       <v-btn icon>
-        <i class="fas fa-laptop-code"></i>
+        <i class="fas fa-laptop-code secondary--text" :style="{fontSize: '25px'}"></i>
       </v-btn>
-      <v-toolbar-title class="pl-2">DaniitooCode</v-toolbar-title>
+      <v-toolbar-title class="pl-2 secondary--text">
+        Code</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-menu
         offset-y
